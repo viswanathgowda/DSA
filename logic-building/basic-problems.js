@@ -48,10 +48,16 @@ function multiplicationTableRec(n, i = 0) {
 
 // Q3. Program to find sum of first n natural numbers. n(n+1)/2
 //n natural numbers : 1,2,3,4,5, etc.
-function sumOfFistnNaturalNumbers(n) {
-  console.log(n, (n * (n + 1)) / 2);
-  return (n * (n + 1)) / 2;
+//example 1: Using Formula
+function sumOfFistnNaturalNumbers(num) {
+  const n = Number(num);
+  const dividend = n * (n + 1);
+  const divisor = 2;
+  console.log(n, "dividnd", dividend);
+  return dividend / divisor;
 }
+
+//Example 2: Iterative
 function sumOfFistnNaturalNumbersItr(n) {
   if (n === 0) {
     return 0;
@@ -65,6 +71,15 @@ function sumOfFistnNaturalNumbersItr(n) {
   }
 }
 
+//Example 3: Recursive
+function sumOfFistnNaturalNumbersRec(n, x = 0, sum = 0) {
+  n = Number(n);
+  if (x > n) {
+    return sum;
+  }
+  return sumOfFistnNaturalNumbersRec(n, x + 1, sum + x);
+}
+
 module.exports = {
   isOddorEven,
   isOddorEvenBitwiseOp,
@@ -73,6 +88,7 @@ module.exports = {
   multiplicationTableRec,
   sumOfFistnNaturalNumbers,
   sumOfFistnNaturalNumbersItr,
+  sumOfFistnNaturalNumbersRec,
 };
 
 if (require.main === module) {
