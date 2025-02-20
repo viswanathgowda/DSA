@@ -1,5 +1,5 @@
 //Q1. Given a number n, check whether it is even or odd. Return true for even and false for odd.
-//Example1
+//Q1Example1
 function isOddorEven(n) {
   if (n % 2 === 0) {
     return "even";
@@ -7,7 +7,7 @@ function isOddorEven(n) {
     return "odd";
   }
 }
-//Example2
+//Q1Example2
 // bitwsie operation - bit wise operatioin coimpares each bit like if n is 2.,
 // then 2 is 10 in binary and 1 is 01 so 10 & 01 = 00 (comparing each bit 1 & 0, 0 & 1)so it is even
 function isOddorEvenBitwiseOp(n) {
@@ -18,7 +18,7 @@ function isOddorEvenBitwiseOp(n) {
   }
 }
 //Example3
-//bitwise shift operation: shift LSB to right(>>), and then to left(<<) and compare(==) with original number
+//Q1bitwise shift operation: shift LSB to right(>>), and then to left(<<) and compare(==) with original number
 function isOddorEvenBitwiseShift(n) {
   if (n == (n >> 1) << 1) {
     return "even";
@@ -28,14 +28,14 @@ function isOddorEvenBitwiseShift(n) {
 }
 
 //Q2. Program to print multiplication table of a number
-//Example1: Iterative Approach – O(1) Time and O(1) Space
+//Q2Example1: Iterative Approach – O(1) Time and O(1) Space
 function multiplicationTable(n) {
   for (let i = 0; i < 10; i++) {
     console.log(`${n} * ${i} = ${n * i}`);
   }
 }
 
-//Example2: Recursive Approach – O(1) Time and O(1) Space
+//Q2Example2: Recursive Approach – O(1) Time and O(1) Space
 function multiplicationTableRec(n, i = 0) {
   if (i === 10) {
     return;
@@ -48,7 +48,7 @@ function multiplicationTableRec(n, i = 0) {
 
 // Q3. Program to find sum of first n natural numbers. n(n+1)/2
 //n natural numbers : 1,2,3,4,5, etc.
-//example 1: Using Formula
+//Q3Example 1: Using Formula
 function sumOfFistnNaturalNumbers(num) {
   const n = Number(num);
   const dividend = n * (n + 1);
@@ -57,7 +57,7 @@ function sumOfFistnNaturalNumbers(num) {
   return dividend / divisor;
 }
 
-//Example 2: Iterative
+//Q3Example 2: Iterative
 function sumOfFistnNaturalNumbersItr(n) {
   if (n === 0) {
     return 0;
@@ -71,7 +71,7 @@ function sumOfFistnNaturalNumbersItr(n) {
   }
 }
 
-//Example 3: Recursive
+//Q3Example 3: Recursive
 function sumOfFistnNaturalNumbersRec(n, x = 0, sum = 0) {
   n = Number(n);
   if (x > n) {
@@ -80,6 +80,37 @@ function sumOfFistnNaturalNumbersRec(n, x = 0, sum = 0) {
   return sumOfFistnNaturalNumbersRec(n, x + 1, sum + x);
 }
 
+//Q4. Swap two numbers
+//Q4Example 1: using third variable
+function swapTwoNos(a, b) {
+  const temp = a;
+  a = b;
+  b = temp;
+  return `a:${a}, b:${b}`;
+}
+
+//Q4Example 2: destructuring
+function swapTwoNosDest(a, b) {
+  [b, a] = [a, b];
+  return `a: ${a}, b:${b}`;
+}
+
+//Q4Example 3: without using 3rd variable - using Arithmetic operation
+function swapTwoNosArith(a, b) {
+  a = Number(a) + Number(b); // 2 + 3 = 5
+  b = a - b; // 5 - 3 = 2
+  a = a - b; // 5 - 2 = 3
+
+  return `a: ${a}, b: ${b}`;
+}
+
+//Q4Example 4: without using 3rd vairable - using bitwise XOR(^) operator
+function swapTwoNosBitwise(a, b) {
+  a = a ^ b;
+  b = b ^ a;
+  a = a ^ b;
+  return `a: ${a}, b: ${b}`;
+}
 module.exports = {
   isOddorEven,
   isOddorEvenBitwiseOp,
@@ -89,6 +120,10 @@ module.exports = {
   sumOfFistnNaturalNumbers,
   sumOfFistnNaturalNumbersItr,
   sumOfFistnNaturalNumbersRec,
+  swapTwoNos,
+  swapTwoNosDest,
+  swapTwoNosArith,
+  swapTwoNosBitwise,
 };
 
 if (require.main === module) {
